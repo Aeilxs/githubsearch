@@ -1,11 +1,15 @@
+import { useState } from "react";
+import PropTypes from "prop-types";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
 
-function Form() {
+function Form({ handleSearch }) {
   const [elevation, setElevation] = useState(1);
+  const [searchString, setSearchString] = handleSearch;
+  console.log(searchString, setSearchString);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(event);
@@ -14,7 +18,7 @@ function Form() {
     <Paper
       elevation={elevation}
       component="form"
-      onSubmit={(e) => handleSubmit(e)}
+      onSubmit={(event) => handleSubmit(event)}
       sx={{
         p: "2px 4px",
         display: "flex",
@@ -23,6 +27,8 @@ function Form() {
       }}
     >
       <InputBase
+        value={searchString}
+        onChange={(event) => setSearchString(event.target.value)}
         sx={{ ml: 1, flex: 1 }}
         placeholder="Recherchez un repo :)"
         inputProps={{ "aria-label": "search google maps" }}
@@ -39,5 +45,9 @@ function Form() {
     </Paper>
   );
 }
+
+Form.propTypes = {
+  handleSearch: PropTypes.array.isRequired,
+};
 
 export default Form;

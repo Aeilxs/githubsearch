@@ -22,7 +22,7 @@ function Repo() {
             color="text.secondary"
             gutterBottom
           >
-            Pseudo
+            <span>Owner: </span>Pseudo
           </Typography>
         </div>
         <Typography

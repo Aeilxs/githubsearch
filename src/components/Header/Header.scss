@@ -6,5 +6,8 @@
   }
   &-themeToggler {
     text-align: end;
+    cursor: context-menu;
+    text-decoration: underline;
+    margin-bottom: 0.5rem;
   }
 }

@@ -1,19 +1,19 @@
-import logoLight from "./lightThemeLogo.png";
-import logoDark from "./darkThemeLogo.png";
-import "./Header.scss";
-import { IconButton } from "@mui/material";
+import PropTypes from "prop-types";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { IconButton } from "@mui/material";
+import logoDark from "./darkThemeLogo.png";
+import logoLight from "./lightThemeLogo.png";
+import "./Header.scss";
 
 function Header({ handleTheme }) {
-  console.log(handleTheme);
   const [isDarkMode, setIsDarkMode] = handleTheme;
   return (
     <header className="header">
       <img
         className="header-logo"
         src={isDarkMode ? logoDark : logoLight}
-        alt="logo"
+        alt="logo github"
       />
       <div className="header-themeToggler">
         Thème:
@@ -28,4 +28,9 @@ function Header({ handleTheme }) {
     </header>
   );
 }
+
+Header.propTypes = {
+  handleTheme: PropTypes.array.isRequired,
+};
+
 export default Header;
