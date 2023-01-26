@@ -16,7 +16,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [repositories, setRepositories] = useState([]);
   const [totalResult, setTotalResult] = useState(0);
-  const [lastSearch, setLastSearch] = useState("");
 
   const fetchRepos = () => {
     setIsLoading(true);
@@ -27,9 +26,7 @@ function App() {
         setRepositories(res.data.items);
         setTotalResult(res.data.total_count);
       })
-      .catch((error) => {
-        console.error(error);
-      })
+      .catch((error) => console.error(error))
       .finally(() => setIsLoading(false));
   };
 
@@ -43,12 +40,10 @@ function App() {
             fetchRepos={fetchRepos}
             isLoading={isLoading}
             handleSearch={[searchString, setSearchString]}
-            setLastSearch={setLastSearch}
           />
           <Repositories
             totalResult={totalResult}
             repositories={repositories}
-            lastSearch={lastSearch}
           />
         </div>
       </Paper>

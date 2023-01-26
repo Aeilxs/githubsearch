@@ -1,14 +1,12 @@
+import PropTypes from "prop-types";
 import "./Repositories.scss";
 import Repo from "./Repo/Repo";
 import Infos from "./Infos/Infos";
 
-function Repositories({ repositories, totalResult, lastSearch }) {
+function Repositories({ repositories, totalResult }) {
   return (
     <>
-      <Infos
-        lastSearch={lastSearch}
-        totalResult={totalResult}
-      />
+      <Infos totalResult={totalResult} />
       <div className="cards">
         {repositories.map((repo) => (
           <Repo
@@ -20,5 +18,10 @@ function Repositories({ repositories, totalResult, lastSearch }) {
     </>
   );
 }
+
+Repositories.propTypes = {
+  repositories: PropTypes.array.isRequired,
+  totalResult: PropTypes.number.isRequired,
+};
 
 export default Repositories;

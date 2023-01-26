@@ -6,12 +6,11 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import CircularProgress from "@mui/material/CircularProgress";
 
-function Form({ handleSearch, isLoading, fetchRepos, setLastSearch }) {
+function Form({ handleSearch, isLoading, fetchRepos }) {
   const [elevation, setElevation] = useState(1);
   const [searchString, setSearchString] = handleSearch;
   const handleSubmit = (event) => {
     event.preventDefault();
-    setLastSearch(searchString);
     setSearchString("");
     fetchRepos();
   };
@@ -32,8 +31,8 @@ function Form({ handleSearch, isLoading, fetchRepos, setLastSearch }) {
         value={searchString}
         onChange={(event) => setSearchString(event.target.value)}
         sx={{ ml: 1, flex: 1 }}
-        placeholder="Recherchez sur GitHub"
-        onFocus={() => setElevation(4)}
+        placeholder="Recherchez un repo sur GitHub"
+        onFocus={() => setElevation(5)}
         onBlur={() => setElevation(1)}
       />
       <IconButton
