@@ -1,0 +1,13 @@
+.header {
+  min-height: 20%;
+  text-align: center;
+  &-logo {
+    width: 60%;
+  }
+  &-themeToggler {
+    text-align: end;
+    cursor: context-menu;
+    text-decoration: underline;
+    margin-bottom: 0.5rem;
+  }
+}
