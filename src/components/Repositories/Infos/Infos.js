@@ -1,13 +1,22 @@
 import { Alert, AlertTitle } from "@mui/material";
 
-function Infos() {
+function Infos({ lastSearch, totalResult }) {
+  let severity = "info";
+  let title = `Votre recherche: ${lastSearch}`;
+  let message = `Nombre de résultat: `;
+  if (!lastSearch) {
+    severity = "warning";
+    title = "Recherche invalide";
+    message = "Essayez autre chose !";
+  }
   return (
     <Alert
-      severity="warning"
-      sx={{ marginBottom: "1rem", border: "1px solid orange" }}
+      severity={severity}
+      sx={{ marginBottom: "1rem" }}
     >
-      <AlertTitle>Error</AlertTitle>
-      This is an error alert — <strong>check it out!</strong>
+      <AlertTitle>{title}</AlertTitle>
+      {message}
+      {severity === "info" && <strong>{totalResult}</strong>}
     </Alert>
   );
 }

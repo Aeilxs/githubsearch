@@ -30,7 +30,9 @@ function Header({ handleTheme }) {
 }
 
 Header.propTypes = {
-  handleTheme: PropTypes.array.isRequired,
+  handleTheme: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.bool.isRequired, PropTypes.func.isRequired])
+  ).isRequired,
 };
 
 export default Header;

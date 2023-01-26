@@ -5,42 +5,44 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Avatar } from "@mui/material";
-
 import "./Repo.scss";
 
-function Repo() {
+function Repo(repo) {
   return (
-    <Card>
+    <Card sx={{ height: "350px", position: "relative" }}>
       <CardContent>
         <div className="user">
           <Avatar
             sx={{ position: "right" }}
-            src="https://avatars.githubusercontent.com/u/102265036?v=4"
+            src={repo.owner.avatar_url}
           />
           <Typography
             sx={{ fontSize: 14 }}
             color="text.secondary"
             gutterBottom
           >
-            <span>Owner: </span>Pseudo
+            <span>Owner: </span>
+            {repo.owner.login}
           </Typography>
         </div>
         <Typography
           variant="h5"
           component="div"
         >
-          Nom du repo
+          {repo.name}
         </Typography>
         <Typography
           sx={{ mb: 1.5 }}
           color="text.secondary"
         >
-          adjective
+          {repo.full_name}
         </Typography>
         <Typography
           sx={{
-            maxHeight: "150px",
+            minHeight: "100px",
+            maxHeight: "100px",
             paddingRight: "3px",
+            overflowX: "hidden",
             overflowY: "scroll",
             "::-webkit-scrollbar": {
               width: "0.4em",
@@ -52,22 +54,10 @@ function Repo() {
           }}
           variant="body1"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
-          risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
-          ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula
-          massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci
-          nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl
-          sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae,
-          consequat in, pretium a, enim. Pellentesque congue. Ut in risus
-          volutpat libero pharetra tempor. Cras vestibulum bibendum augue.
-          Praesent egestas leo in pede. Praesent blandit odio eu enim.
-          Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum
-          primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-          Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum.
-          Maecenas adipiscing ante non diam sodales hendrerit.
+          {repo.description}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ position: "absolute", bottom: 0 }}>
         <Button
           variant="outlined"
           size="small"
