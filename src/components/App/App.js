@@ -7,6 +7,7 @@ import Header from "../Header/Header";
 import Repositories from "../Repositories/Repositories";
 import { lightTheme, darkTheme } from "./Theme";
 import "./App.scss";
+import { Route, Routes } from "react-router-dom";
 
 // https://api.github.com/search/repositories?q=REPOACHERCHER&sort=stars&order=desc&page=1&per_page=9
 
@@ -36,15 +37,25 @@ function App() {
       <Paper elevation={4}>
         <div className="App">
           <Header handleTheme={[isDarkMode, setIsDarkMode]} />
-          <Form
-            fetchRepos={fetchRepos}
-            isLoading={isLoading}
-            handleSearch={[searchString, setSearchString]}
-          />
-          <Repositories
-            totalResult={totalResult}
-            repositories={repositories}
-          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  {" "}
+                  <Form
+                    fetchRepos={fetchRepos}
+                    isLoading={isLoading}
+                    handleSearch={[searchString, setSearchString]}
+                  />
+                  <Repositories
+                    totalResult={totalResult}
+                    repositories={repositories}
+                  />
+                </>
+              }
+            />
+          </Routes>
         </div>
       </Paper>
     </ThemeProvider>
