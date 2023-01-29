@@ -6,11 +6,19 @@ import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import CircularProgress from "@mui/material/CircularProgress";
 
-function Form({ handleSearch, isLoading, fetchRepos }) {
+function Form({
+  handleSearch,
+  isLoading,
+  fetchRepos,
+  setPreviousSearch,
+  setPage,
+}) {
   const [elevation, setElevation] = useState(1);
   const [searchString, setSearchString] = handleSearch;
   const handleSubmit = (event) => {
     event.preventDefault();
+    setPage(1);
+    setPreviousSearch(searchString);
     setSearchString("");
     fetchRepos();
   };
@@ -55,6 +63,7 @@ Form.propTypes = {
   ).isRequired,
   isLoading: PropTypes.bool.isRequired,
   fetchRepos: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
 };
 
 export default Form;

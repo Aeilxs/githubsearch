@@ -1,19 +1,23 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Avatar } from "@mui/material";
+import { Avatar, Link } from "@mui/material";
 import "./Repo.scss";
 
 function Repo(repo) {
+  const navigate = useNavigate();
+
   return (
     <Card sx={{ height: "350px", position: "relative" }}>
       <CardContent>
         <div className="user">
           <Avatar
-            sx={{ position: "right" }}
+            sx={{ position: "right", cursor: "pointer" }}
+            onClick={() => navigate(`/utilisateur/${repo.owner.id}`)}
             src={repo.owner.avatar_url}
           />
           <Typography
@@ -61,15 +65,16 @@ function Repo(repo) {
         <Button
           variant="outlined"
           size="small"
-        >
-          Repo
-        </Button>
-        <Button
-          variant="outlined"
-          size="small"
+          onClick={() => navigate(`/utilisateur/${repo.owner.id}`)}
         >
           Utilisateur
         </Button>
+        <Link
+          href={repo.html_url}
+          sx={{ ml: "1rem" }}
+        >
+          Repo
+        </Link>
       </CardActions>
     </Card>
   );
