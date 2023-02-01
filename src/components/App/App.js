@@ -9,6 +9,7 @@ import Form from "../Form/Form";
 import Header from "../Header/Header";
 import Repositories from "../Repositories/Repositories";
 import User from "../User/User";
+import NotFound from "../NotFound/NotFound";
 
 function App() {
   const [previousSearch, setPreviousSearch] = useState("");
@@ -112,6 +113,10 @@ function App() {
                   isLoading={isLoading}
                 />
               }
+            />
+            <Route
+              path="*"
+              element={<NotFound />}
             />
           </Routes>
         </div>
